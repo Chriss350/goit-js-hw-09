@@ -21,7 +21,7 @@ const convertMs = ms => {
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
-
+  let timer;
   return { days, hours, minutes, seconds };
 };
 
@@ -34,10 +34,10 @@ const checkPickDate = (timeSel, timeNow) => {
 
 const startCount = () => {
   btnStart.disabled = true;
-  timer = setInterval(() => {
+  let timer = setInterval(() => {
     timeDiff -= 1000;
     if (timeDiff < 1000) {
-      stopCounter();
+      stopCounter(timer);
       return Notiflix.Notify.success('End counting');
     }
     updateCounter();
@@ -59,7 +59,7 @@ const clearCounter = () => {
   txtSec.innerHTML = '00';
 };
 
-const stopCounter = () => {
+const stopCounter = timer => {
   btnStart.disabled = true;
   clearCounter();
   clearInterval(timer);
