@@ -32,6 +32,9 @@ btnSubmit.addEventListener('click', e => {
   if (inputStep.value < 1) {
     return Notiflix.Notify.info('wprowadz liczbę więszą niż 0 w pole Step');
   }
+
+  btnSubmit.disabled = true;
+
   let delay = Number(inputDelay.value);
   for (let i = 1; i <= inputAmount.value; i++) {
     createPromise(i, delay)
@@ -45,6 +48,11 @@ btnSubmit.addEventListener('click', e => {
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
+
     delay = delay + Number(inputStep.value);
   }
+
+  setTimeout(() => {
+    btnSubmit.disabled = false;
+  }, delay);
 });
