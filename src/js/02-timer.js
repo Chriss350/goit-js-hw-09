@@ -3,6 +3,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 const btnStart = document.querySelector('button[data-start]');
+const btnPickDate = document.querySelector('#datetime-picker');
 const txtDay = document.querySelector('span[data-days]');
 const txtHr = document.querySelector('span[data-hours]');
 const txtMin = document.querySelector('span[data-minutes]');
@@ -34,6 +35,7 @@ const checkPickDate = (timeSel, timeNow) => {
 
 const startCount = () => {
   btnStart.disabled = true;
+  btnPickDate.disabled = true;
   timer = setInterval(() => {
     timeDiff -= 1000;
     if (timeDiff < 1000) {
@@ -60,7 +62,8 @@ const clearCounter = () => {
 };
 
 const stopCounter = () => {
-  btnStart.disabled = true;
+  btnStart.disabled = false;
+  btnPickDate.disabled = false;
   clearCounter();
   clearInterval(timer);
   return;
