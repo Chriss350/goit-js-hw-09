@@ -82,11 +82,6 @@ const options = {
   },
 };
 
-txtDay.innerHTML = '00';
-txtHr.innerHTML = '00';
-txtMin.innerHTML = '00';
-txtSec.innerHTML = '00';
-
 flatpickr('#datetime-picker', options);
 
 btnStart.addEventListener('click', () => {
